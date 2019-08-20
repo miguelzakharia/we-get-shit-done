@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>We Get Shit Done</title>
+	<link href="https://fonts.googleapis.com/css?family=Teko:300|Rock+Salt&display=swap" rel="stylesheet">
+
+	<style>
+		body {
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+			text-transform: uppercase;
+			font-family: 'Teko', sans-serif;
+			font-size: 16px;
+			word-spacing: 0.4em;
+		}
+
+		@media (max-width: 425px) {
+			h1 {
+				font-size: 4.0em;
+			}
+
+			.take-notice {
+				font-size: 1.8em;
+			}
+
+			.calm-down {
+				font-size: 1.3em;
+			}
+
+			#daysLeft {
+				width: 40%;
+			}
+		}
+
+		@media (min-width: 426px) and (max-width: 768px) {
+			body {
+				padding-top: 20px;
+			}
+			
+			h1 {
+				font-size: 6em;
+				font-weight: 100;
+				line-height: 0.8em;
+			}
+
+			.take-notice {
+				font-size: 1.8em;
+			}
+
+			.calm-down {
+				font-size: 1.3em;
+			}
+
+			#daysLeft {
+				width: 30%;
+			}
+		}
+
+		h2 {
+			font-size: 3em;
+			font-weight: 100;
+		}
+
+		h1,h2,h3,h4,h5 {
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		#daysLeft {
+			font-family: 'Rock Salt', cursive;
+			font-size: 1.5em;
+			border: 3px solid black;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>there are</h1>
+	<div id="daysLeft">100</div>
+	<h1>days left in <span id="currentYear"></span></h1>
+	<h2>what are your priorities?</h2>
+	<p class="calm-down">are you actually treating them as your priorities?</p>
+	<p class="take-notice">are you on track to achieving your goals?</p>
+	<p class="take-notice"><strong>we get shit done</strong></p>
+	<p class="calm-down">this house is not the place for excuses <em>or procrastination</em></p>
+	<script>
+		function treatAsUTC(date) {
+				var result = new Date(date);
+				result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+				return result;
+			}
+
+			function daysBetween(startDate, endDate) {
+				var millisecondsPerDay = 24 * 60 * 60 * 1000;
+				return Math.floor((treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay);
+			}
+
+		var currentYear = new Date().getFullYear();
+		var numberOfDaysLeftInCurrentYear = daysBetween(new Date(), `12/31/${currentYear}`);
+		document.getElementById('daysLeft').innerHTML = numberOfDaysLeftInCurrentYear;
+		document.getElementById('currentYear').innerHTML = currentYear;
+	</script>
+</body>
+</html>
